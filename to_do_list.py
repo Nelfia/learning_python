@@ -26,8 +26,8 @@ liste = []
 
 while choice != "5" :
     print("Veuillez faire un choix dans la liste suivante: ")
-    for i, element in enumerate(choices) :
-        print(f"{i + 1}:", element)
+    for i, element in enumerate(choices, 1) :
+        print(f"{i}:", element)
     choice = input("👉 Votre choix: ")
     
     elt = ""
@@ -52,16 +52,15 @@ while choice != "5" :
         if len(liste) < 1 :
             print("🙈 Il n'y a aucun élément à afficher dans la liste.")
         else : 
-            for i, element in enumerate(liste) :
-                print(i + 1, element)  
+            for i, element in enumerate(liste, 1) :
+                print(i, element)  
     elif choice == "4" :
         if len(liste) > 1 :
-            liste.clear()
+            liste = liste.clear()
         print("Tous les éléments de la liste ont été supprimés.")
+    elif choice == "5" :
+        print("👋 À bientôt !")
     else :
-        if choice == "5" :
-            print("👋 À bientôt !")
-        else :
-            print("🙈 Choix incorrect")
+        print("🙈 Choix incorrect")
     print("_________________________________________________")
 
