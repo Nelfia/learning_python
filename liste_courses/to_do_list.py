@@ -1,18 +1,5 @@
-# Le programme doit permettre de réaliser 5 actions :
-
-#     Ajouter un élément à la liste de courses
-
-#     Retirer un élément de la liste de courses
-
-#     Afficher les éléments de la liste de courses
-
-#     Vider la liste de courses
-
-#     Quitter le programme
-
-# Tu dois donc demander à l'utilisateur de choisir parmi une de ces action en entrant un nombre de 1 à 5.
-
-# Tu dois gérer le cas de figure où l'utilisateur ne rentre pas un nombre compris entre 1 et 5 ou s'il rentre par exemple des lettres ou un autre symbole invalide. Dans ce cas, tu dois afficher de nouveau le menu avec les options disponibles, jusqu'à ce que l'utilisateur choisisse une option valide.
+import os
+import json
 
 choices = [
     "Ajouter un élément à la liste de courses", 
@@ -22,7 +9,19 @@ choices = [
     "Quitter le programme"
 ]
 choice = 0
-liste = []
+
+# Fichier de sauvegarde liste de courses
+# chemin = r"D:\desktop\python\formation\pratique\liste_courses\liste.json"
+CUR_DIR = os.path.dirname(__file__)
+chemin = os.path.join(CUR_DIR, "liste.json")
+
+# Vérification présence fichier:
+if os.path.exists(chemin) :
+    with open(chemin, "r", encoding="utf-8") as file :
+        liste = json.load(file)
+        print(liste)
+else :
+    liste = []
 
 while choice != "5" :
     print("Veuillez faire un choix dans la liste suivante: ")
@@ -49,6 +48,8 @@ while choice != "5" :
             else :
                 print(f"🙈 Aucun élément {elt} dans la liste.")
     elif choice == "3" :
+        if not liste:
+            liste = []
         if len(liste) < 1 :
             print("🙈 Il n'y a aucun élément à afficher dans la liste.")
         else : 
@@ -57,10 +58,14 @@ while choice != "5" :
     elif choice == "4" :
         if len(liste) > 1 :
             liste = liste.clear()
+            liste = []
         print("Tous les éléments de la liste ont été supprimés.")
     elif choice == "5" :
         print("👋 À bientôt !")
     else :
         print("🙈 Choix incorrect")
     print("_________________________________________________")
+
+with open(chemin, "w") as file: 
+    json.dump(liste, file, indent=4)
 

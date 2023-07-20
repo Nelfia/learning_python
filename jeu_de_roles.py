@@ -17,7 +17,7 @@ while (pv_user > 0 and pv_ennemy > 0):
         pv_ennemy -= user_damage
 
         if pv_ennemy <= 0 :
-            print("Vous avez gagné 💪")
+            print("🥳\tVous avez gagné 💪")
             break
 
         # Attaque de l'ennemi:
@@ -63,7 +63,7 @@ while (pv_user > 0 and pv_ennemy > 0):
             print(f"❤️\tIl reste {pv_ennemy} points de vie à l'ennemi.")
 
     if pv_user <= 0 :
-        print("Vous avez perdu 😵‍💫")
+        print("😒\tVous avez perdu 😵‍💫")
         break
     print("____________________________________________________________")
 
